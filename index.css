@@ -301,6 +301,7 @@ section {
     h4 {
         padding-bottom: 32px;
         color: inherit;
+        width: 80%;
     }
     p {
         padding-left: 40px;
@@ -335,14 +336,42 @@ section {
     width: 800px;
     padding-bottom: 40px;
     padding-top: 24px;
+    h4 {
+        font-size: 26px;
+        margin-bottom: 24px;
+        i {
+            font-style: normal;
+            color: var(--blue);
+        }
+    }
+    ul  {
+        letter-spacing: 0.6px;
+        line-height: 1.5;
+    }
+    li {
+        position: relative;
+        &:not(:last-child) {margin-bottom: 16px;}
+        &::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            border-top-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+            width: 15px;
+            height: 11px;
+            background-color: var(--green);
+        }
+
+    }
     &.left { 
         border-top-left-radius: 30% 10%; 
         border-top-right-radius: 50% 30%; 
         border-bottom-right-radius: 100% 80%; 
         padding-right: 96px;
         padding-left: 16px;
-        &>ul {
-            margin-left: -32px; 
+        li::after {
+            left: -24px;
+            transform: rotate(30deg) skew(45deg);
         }
     }
     &.right { 
@@ -352,22 +381,23 @@ section {
         border-top-left-radius: 50% 30%; 
         padding-right: 16px;
         padding-left: 96px;
+        ul {
+            margin-right: 24px;
+        }
+        li::after {
+            right: -24px;
+            transform: rotate(110deg) skew(45deg);
+        }
     }
-    h4 {
-        font-size: 26px;
-        margin-bottom: 16px;
-    }
-    ul  {
-        letter-spacing: 0.6px;
-        line-height: 1.5; 
-    }
-    li:not(:last-child) {margin-bottom: 16px;}
 }
 
 
 footer {
+    border-top: 3px solid var(--grey);
     height: 140px;
     color: var(--grey);
     background-image: url('./footer.png');
-    background-position: 50% 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25% 40%;
 }
