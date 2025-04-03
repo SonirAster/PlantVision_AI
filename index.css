@@ -81,6 +81,7 @@ section {
     border-radius: 12px;
     transition: all 0.4s ease;
     animation-name: appear;
+    animation-iteration-count: 1;
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
@@ -248,7 +249,7 @@ section {
 .benefits {
     padding-top: 0;
     padding-bottom: 16px;
-    background-image: url('./img.png');
+    background-image: url('./assets/img.png');
     background-size: cover;
     background-repeat: no-repeat;
     h4 {
@@ -396,7 +397,7 @@ footer {
     border-top: 3px solid var(--grey);
     height: 140px;
     color: var(--grey);
-    background-image: url('./footer.png');
+    background-image: url('./assets/footer.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 25% 40%;
