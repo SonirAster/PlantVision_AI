@@ -310,13 +310,20 @@ section {
 }
 
 .project_roadmap {
-    h4 {
-        padding-bottom: 32px;
+    animation-range: entry 0% cover 20%;
+    background-color: var(--green);
+    border: 2px solid var(--grey);
+    &>h4 { 
+        width: 80%;
+        padding-bottom: 32px; 
+        color: var(--grey);
     }
+
 }
 
 .project_roadmap .phases__list {
-    gap: 40px;
+    gap: 60px;
+    margin-top: 24px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -324,30 +331,37 @@ section {
 }
 
 .phase_item {
-    padding: 24px 16px 40px 16px;
-    border-bottom: 2px solid var(--gold);
-    color: var(--blue);
-    border-radius: 6px;
-    position: relative;
     font-size: 20px;
-    &:not(:last-child) { 
-        margin-bottom: 24px;
-        ul {
-            margin-left: -32px;
+    width: 800px;
+    padding-bottom: 40px;
+    padding-top: 24px;
+    &.left { 
+        border-top-left-radius: 30% 10%; 
+        border-top-right-radius: 50% 30%; 
+        border-bottom-right-radius: 100% 80%; 
+        padding-right: 96px;
+        padding-left: 16px;
+        &>ul {
+            margin-left: -32px; 
         }
     }
-    &:nth-of-type(even) {
-        text-align: end;
-        /* &>ul { margin-right: 40px; } */
+    &.right { 
+        text-align: end; 
+        border-bottom-left-radius: 100% 80%;
+        border-top-right-radius: 30% 10%; 
+        border-top-left-radius: 50% 30%; 
+        padding-right: 16px;
+        padding-left: 96px;
     }
     h4 {
         font-size: 26px;
-        color: var(--gold);
-        margin-bottom: 24px;
+        margin-bottom: 16px;
     }
-    &>ul>li {
+    ul  {
         letter-spacing: 0.6px;
+        line-height: 1.5; 
     }
+    li:not(:last-child) {margin-bottom: 16px;}
 }
 
 
