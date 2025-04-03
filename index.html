@@ -32,7 +32,7 @@
                             <a class="nav-link" href="#vision">Our Vision</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#vision">Project roadmap</a>
+                            <a class="nav-link" href="#roadmap">Project roadmap</a>
                         </li>
                     </ul>
                 </div>
@@ -46,8 +46,8 @@
                 Discover new fronteers <br> with Plantvision AI
             </p>
         </div>
+        <!-- loop autoplay muted -->
         <video class="hero-vid" 
-            loop autoplay muted
             src="./assets/vid4.mp4" type="video/mp4">
         </video>
     </section>
@@ -166,7 +166,7 @@
                     environmental impact and resource consumption.
                 </p>
             </section>
-            <section class="project_roadmap">
+            <section class="project_roadmap" id="roadmap">
                 <h4>Project Roadmap:</h4>
                 <ul class="phases__list">
                     <li class="gold-table left">
@@ -215,6 +215,12 @@
         crossorigin="anonymous"></script>
     <script>
         const nav = document.querySelector('header');
+        const navHeight = document.querySelector('.navbar').offsetHeight;
+        
+        document.documentElement.style.setProperty(
+            '--scroll-padding',
+            navHeight +'px'
+        );
 
         window.addEventListener('scroll', () => {
             if (window.scrollY >= 40) {

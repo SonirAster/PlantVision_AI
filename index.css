@@ -29,6 +29,11 @@
     }
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding: var(--scroll-padding);
+}
+
 li { list-style: none;}
 
 body {
@@ -288,13 +293,13 @@ section {
 }
 
 .our_vision {
-    padding: 16px;
     letter-spacing: 0.6px;
     background-color: var(--green);
     color: var(--grey);
     b {color: var(--blue);}
+    border: 2px solid var(--grey);
     h4 {
-        padding: 24px 0 32px 0;
+        padding-bottom: 32px;
         color: inherit;
     }
     p {
@@ -302,11 +307,12 @@ section {
         padding-right: 40px;
         border: none;
     }
-    border: 2px solid var(--grey);
 }
 
 .project_roadmap {
-
+    h4 {
+        padding-bottom: 32px;
+    }
 }
 
 .project_roadmap .phases__list {
@@ -316,10 +322,6 @@ section {
     flex-direction: column;
     padding: 0 0px;
 }
-        /* aspect-ratio: 1;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: 66%; */
 
 .phase_item {
     padding: 24px 16px 40px 16px;
