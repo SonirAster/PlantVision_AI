@@ -164,7 +164,6 @@ section {
     left: 50%;
     translate: -50% -50%;
     color: var(--blue);
-    -webkit-text-stroke: #5f6c11 2px;
     animation-name: TextSlideUp;
     animation-duration: 1.2s;
     animation-timing-function: ease-in;
@@ -175,14 +174,12 @@ section {
         letter-spacing: 4px;
         text-transform: uppercase;
         color: white;
-        -webkit-text-stroke: var(--blue) 0.7px;
     }
     .hero__text {
         font-size: 32px;
         letter-spacing: 0.6px;
         line-height: 1.7;
         color: white;
-        -webkit-text-stroke: var(--blue) 0.7px;
     }
 }
 
@@ -512,10 +509,6 @@ footer .contacts {
     header {
         padding: 16px 8px 0 8px;
         background-color: var(--grey);
-        .navbar-collapse {
-            justify-self: end;
-            max-width: fit-content;
-        }
     }
     .benefits {
         background-position: 45% top;
@@ -541,13 +534,22 @@ footer .contacts {
         }
         .navbar ul {
             font-size: 20px;
-            flex-direction: row;
+            margin-top: 8px;
             margin-left: 24px;
         }
         .navbar-toggler {
-            position: relative;
+            position: absolute;
             top: 0;
             right: 16px;
+        }
+    }
+    .hero__content {
+        .hero__title {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .hero__text {
+            font-size: 28px;
         }
     }
     .demo-stats__list {
@@ -600,10 +602,23 @@ footer .contacts {
         width: calc(100% - 24px);
         &.right li:last-child { padding-bottom: 16px; }
     }
+    section>h4 { font-size: 28px; }
+    .benefits>h4,
+    .our_vision>h4 { padding: 24px 0; }
+    .our_vision {padding-top: 8px;}
+    .phase_item>h4 { font-size: 24px; }
 }
 
 @media (max-width: 767px) {
     section { margin-bottom: 40px; }
+    .hero__content {
+        .hero__title {
+            font-size: 28px;
+        }
+        .hero__text {
+            font-size: 24px;
+        }
+    }
     .demo-stats__list { 
         gap: 16px; 
         padding: 16px 12px; 
@@ -683,6 +698,9 @@ footer .contacts {
         animation: none;
         margin-bottom: 0;
         border-radius: 0;
+        &>h4 {
+            font-size: 26px;
+        }
     }
     .container, .container-fluid {
         margin: 0; 
@@ -707,6 +725,14 @@ footer .contacts {
             }
         }
     }
+    .hero__content {
+        .hero__title {
+            font-size: 26px;
+        }
+        .hero__text {
+            font-size: 22px;
+        }
+    }
     .gold-table:not(.phase_item) {width: calc(100% - 16px);}
     .demo-stats__list {
         grid-template-columns: repeat(1, 1fr);
@@ -717,11 +743,9 @@ footer .contacts {
         min-height: 200px;
         .stats__head {font-size: 22px;}
     }
-    .benefits {
-        padding-top: 16px;
-        h4 {
-            border-radius: 0;
-        }
+    .benefits>h4 {
+        border-radius: 0;
+        border-top: 2px solid var(--gold);
     }
     .benefits__list {
         margin-top: 16px;
@@ -746,6 +770,9 @@ footer .contacts {
         }
     }
     .vision-vid { width: calc(100% - 16px); border-radius: 10px;}
+    .project_roadmap>h4 {
+        letter-spacing: 1.8px;
+    }
     .project_roadmap .phases__list {
         gap: 8px;
     }
@@ -784,4 +811,70 @@ footer .contacts {
     }
 }
 
-@media (max-width: 321px) {}
+@media (max-width: 380px) {
+    header {
+        .logo {
+            .logo_title {
+                font-size: 22px;
+                padding-top: 4px;
+            }
+            img {
+                width: 70px;
+                margin: -10px -22px 0px -16px;
+            }
+        }
+        .navbar-toggler {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .navbar-collapse ul {
+            flex-direction: column;
+            margin: 0;
+            margin-top: 4px;
+            padding-left: 8px;
+            gap: 8px;
+        }
+    }
+}
+
+@media (max-width: 321px) {
+    .hero__content {
+        .hero__title {
+            font-size: 22px;
+        }
+        .hero__text {
+            font-size: 18px;
+        }
+    }
+    .project_roadmap>h4 {margin-bottom: 0;}
+    .phase_item {
+        width: 100%;
+        margin-top: 0;
+        padding-top: 24px;
+        &:nth-of-type(even) {
+            border-top-left-radius: 0;
+        }
+        &:nth-of-type(odd) {
+            border-top-right-radius: 0;
+        }
+        h4 { font-size: 22px; }
+        ul {
+            margin-top: 0;
+            padding-left: 12px;
+            
+        }
+        li {  font-size: 18px; }
+    }
+    footer {
+        .contacts {
+            margin-left: 16px;
+            }
+        .logo {
+            margin-left: -8px;
+        }
+        .footer__nav {
+            padding-left: 16px;
+        }
+    }
+}
