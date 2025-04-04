@@ -253,9 +253,7 @@
         const navHeight = document.querySelector('.navbar').offsetHeight;
         
         document.documentElement.style.setProperty(
-            '--scroll-padding',
-            navHeight + 'px'
-        );
+            '--scroll-padding', navHeight + 'px' );
 
         window.addEventListener('scroll', () => {
             if (window.scrollY >= 40) {
