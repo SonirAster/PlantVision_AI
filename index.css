@@ -311,20 +311,7 @@ section {
         padding-right: 40px;
         border: none;
         width: 80%;
-    }
-}
-
-.vision__vid_container {
-    position: relative;
-    transition: all 0.4s ease;
-    :is(&:hover, &:focus-within, &.paused) .vid_controls_container {
-        opacity: 1;
-    }
-    &.paused {
-        .pause-icon {display: none;}
-    }
-    &:not(.paused) {
-        .play-icon {display: none;}
+        text-align: center;
     }
 }
 
@@ -337,33 +324,6 @@ section {
     border: 2px solid var(--grey);
     border-radius: 16px;
 }
-
-.vid_controls_container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 70;
-    opacity: 0;
-    .timerline_container {
-
-    }
-    .controls {
-        display: flex;
-        gap: 0.5rem;
-        padding: 0.25rem;
-        align-items: center;
-        svg {
-            width: 40px; 
-            height: 40px; 
-        }
-    }
-    .play-pause_btn {
-        background-color: var(--gold);
-    }
-}
-
-
 
 .project_roadmap {
     animation-range: entry 0% cover 20%;
