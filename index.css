@@ -31,7 +31,8 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding: var(--scroll-padding);
+    /* scroll-padding: var(--scroll-padding); */
+    scroll-padding-top: 80px;
 }
 
 li { list-style: none;}
@@ -299,6 +300,7 @@ section {
     color: var(--grey);
     b {color: var(--blue);}
     border: 2px solid var(--grey);
+    position: relative;
     h4 {
         padding-bottom: 32px;
         color: inherit;
@@ -308,8 +310,60 @@ section {
         padding-left: 40px;
         padding-right: 40px;
         border: none;
+        width: 80%;
     }
 }
+
+.vision__vid_container {
+    position: relative;
+    transition: all 0.4s ease;
+    :is(&:hover, &:focus-within, &.paused) .vid_controls_container {
+        opacity: 1;
+    }
+    &.paused {
+        .pause-icon {display: none;}
+    }
+    &:not(.paused) {
+        .play-icon {display: none;}
+    }
+}
+
+.vision-vid {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 740px;
+    margin: 24px 0;
+    border: 2px solid var(--grey);
+    border-radius: 16px;
+}
+
+.vid_controls_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 70;
+    opacity: 0;
+    .timerline_container {
+
+    }
+    .controls {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.25rem;
+        align-items: center;
+        svg {
+            width: 40px; 
+            height: 40px; 
+        }
+    }
+    .play-pause_btn {
+        background-color: var(--gold);
+    }
+}
+
+
 
 .project_roadmap {
     animation-range: entry 0% cover 20%;
@@ -394,11 +448,89 @@ section {
 
 
 footer {
+    padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--grey);
-    height: 140px;
     color: var(--grey);
     background-image: url('./assets/footer.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 25% 40%;
+    background-position: 25% 20%;
+    position: relative;
+    .container {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .logo {
+        padding-top: 8px;
+        width: fit-content;
+        height: 100%;
+        width: 100%;
+        .logo_title { color: var(--grey); }
+    }
+    .name {
+        position: absolute;
+        top: 25%;
+        right: 160px;
+        font-size: 20px;
+    }
+}
+
+.footer__nav {
+    display: flex;
+    gap: 16px;
+    letter-spacing: 0.8px;
+    display: flex;
+    flex-direction: column;
+    .nav-link {
+        transition: all 0.4s ease-in;
+        text-decoration: underline 1px var(--gold);
+        text-underline-offset: 8px;
+        &:hover {
+            color: var(--hover-color);
+            text-decoration: underline 2px var(--hover-color);
+        }
+    }
+}
+
+footer .contacts {
+    display: flex;
+    gap: 24px;
+    align-self: end;
+    justify-self: flex-end;
+    svg {
+        width: 32px;
+        fill: var(--grey);
+        transition: all 0.4s ease-in;
+        &:hover { fill: var(--hover-color); }
+    }
+    a {
+        transition: all 0.4s ease-in;
+        color: var(--grey);
+        text-decoration: none;
+        letter-spacing: 0.8px;
+        &:hover {
+            color: var(--hover-color);
+            text-decoration: underline 2px var(--hover-color);
+        }
+    }
+    .insta {
+        grid-area: insta;
+       
+    }
+    .linkedin {
+        grid-area: linkedin;
+    }
+    .mail {
+
+        grid-area: mail;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar {
+        width: 100vw;
+    }
 }
