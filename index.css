@@ -2,7 +2,8 @@
     --gold: #fbc11a;
     --green: #5f6c11;
     --grey: #eae7e0;  
-    --blue: #4d9699;
+    /* --blue: #4d9699; */
+    --blue: #4b6dca;
     --hover-color: var(--blue);
 }
 
@@ -75,14 +76,33 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--grey);
-    border-radius: 12px;
+    border-radius: 16px;
+    background-color: var(--green);
     transition: all 0.4s ease;
     animation-name: appear;
     animation-iteration-count: 1;
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
+
+    -webkit-animation-name: appear;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: forwards;
+
+    -o-animation-name: appear;
+    -o-animation-iteration-count: 1;
+    -o-animation-duration: 2s;
+    -o-animation-timing-function: ease-in;
+    -o-animation-fill-mode: forwards;
+
+    -moz-animation-name: appear;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-fill-mode: forwards;
+
     animation-timeline: view();
     animation-range: entry 0% cover 32%;
     &>h4 {
@@ -197,10 +217,8 @@ section {
     margin: 0 24px;
     padding: 24px;
     display: grid;
-    border-radius: 16px;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px 24px;
-    background-color: var(--green);
 }
 
 .demo-stats__list__item {
