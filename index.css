@@ -16,7 +16,7 @@
     0% { transform: translateY(200px); }
     100% { transform: translateY(0); }
 }
-@keyframes appear {
+/* @keyframes appear {
     from {
         opacity: 0;
         transform: translateY(200px);
@@ -25,7 +25,7 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
+}*/
 
 html {
     scroll-behavior: smooth;
@@ -78,7 +78,7 @@ section {
     background-color: var(--grey);
     border-radius: 12px;
     transition: all 0.4s ease;
-    animation-name: appear;
+    /* animation-name: appear; */
     animation-iteration-count: 1;
     animation-duration: 2s;
     animation-timing-function: ease-in;
