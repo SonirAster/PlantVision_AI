@@ -1,17 +1,17 @@
 :root {
-    --gold: #fbc11a;
+    /* --gold: #fbc11a; */
     --gold: rgb(253, 215, 118);
-    --green: #5f6c11;
-    --eegreen: #202229;
+    /* --green: #5f6c11; */
+    --dark-blue: #202229;
     --green: #3d5e1f;
     --grey: #eae7e0;  
     /* --blue: #4d9699; */
     --blue: #4b6dca;
     --blue: #2a2d35;
-    --hover-color: var(--blue);
+    --hover-color: var(--gold);
 
     --fsz-title-primary: 36px;
-    --fsz-title-secondary: 36px;
+    --fsz-title-secondary: 34px;
     --ls-title: 3px;
     --ls-text: 0.6px;
 }
@@ -47,6 +47,7 @@ html {
 }
 
 li { list-style: none;}
+b {color: var(--gold);}
 
 body {
     overflow-x: hidden;
@@ -68,18 +69,15 @@ header {
     background-color: rgba(234, 231, 224, 0);
     border-bottom: 1px solid var(--gold);
     transition: all 0.5s ease-in;
-
     .container-fluid,
     .navbar-nav {
         gap: 16px;
     }
-
     .navbar-nav .nav-link {
         transition: all 0.4s ease-in;
-        color: var(--green);
+        color: var(--grey);
         text-decoration: underline 1px var(--gold);
         text-underline-offset: 8px;
-
         &:hover {
             color: var(--hover-color);
             text-decoration: underline 2px var(--hover-color);
@@ -87,17 +85,17 @@ header {
     }
 }
 
-.header-scrolled { background: rgba(234, 231, 224, 1); }
+.header-scrolled { background: var(--dark-blue); }
 
 section {
     margin-bottom: 64px;
-    padding: 40px 0;
+    padding: 40px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 16px;
-    background-color: var(--green);
-    border: 3px solid var(--eegreen);
+    border: 3px solid var(--dark-blue);
+    background-color: var(--dark-blue);
     color: var(--grey);
     transition: all 0.4s ease;
     animation-name: appear;
@@ -105,24 +103,6 @@ section {
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-
-    -webkit-animation-name: appear;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: ease-in;
-    -webkit-animation-fill-mode: forwards;
-
-    -o-animation-name: appear;
-    -o-animation-iteration-count: 1;
-    -o-animation-duration: 2s;
-    -o-animation-timing-function: ease-in;
-    -o-animation-fill-mode: forwards;
-
-    -moz-animation-name: appear;
-    -moz-animation-iteration-count: 1;
-    -moz-animation-duration: 2s;
-    -moz-animation-timing-function: ease-in;
-    -moz-animation-fill-mode: forwards;
 
     animation-timeline: view();
     animation-range: entry 0% cover 32%;
@@ -166,7 +146,7 @@ section>h4 {
 
 .logo {
     display: flex;
-    margin-right: 24px;
+    margin-right: 16px;
     img {
         width: 108px;
         object-fit: contain;
@@ -174,7 +154,7 @@ section>h4 {
     }
     .logo_title {
         font-size: var(--fsz-title-secondary);
-        color: var(--green);
+        color: var(--grey);
         padding-bottom: 8px;
         letter-spacing: var(--ls-text);
     }
@@ -196,7 +176,10 @@ section>h4 {
 
 .hero__content {
     position: absolute;
-    width: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 10;
     top:  50%;
     left: 50%;
@@ -212,6 +195,7 @@ section>h4 {
         margin-bottom: 40px;
         letter-spacing: var(--ls-title);
         text-transform: uppercase;
+        width: 60%;
     }
     .hero__text {
         font-size: var(--fsz-title-secondary);
@@ -230,17 +214,24 @@ section>h4 {
     object-fit: cover;
 }
 
-.demo-stats {    
-    background-color: transparent;
+.about {
 }
 
+.features {
+
+}
+
+.demo-stats {    
+    background-color: transparent;
+    p { padding: 0 56px;}
+}
+
+
 .demo-stats__list {
-    margin: 0 24px;
-    padding: 24px;
+    padding: 24px 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px 24px;
-
 }
 
 .demo-stats__list__item {
@@ -299,7 +290,7 @@ section>h4 {
         margin-bottom: 40px;
         padding: 32px 0;
         width: 100%;
-        background-color: inherit;
+        background-color: none;
     }
 }
 
@@ -310,7 +301,7 @@ section>h4 {
     li {
         width: fit-content;
         border-radius: 16px;
-        background-color: var(--green);
+        background-color: var(--dark-blue);
         border: 3px solid var(--grey);
         padding: 7px 10px 7px 32px;
         text-underline-offset: 6.7px;
@@ -320,22 +311,18 @@ section>h4 {
             content: '';
             position: absolute;
             top: 16px;
-            border-top-right-radius: 4px;
-            border-bottom-left-radius: 4px;
             left: 7px;
             width: 15px;
             height: 11px;
             transform: rotate(25.5deg) skew(45deg) ;
-            background-color: var(--grey);
+            background-color: var(--gold);
         }
     }
 }
 
 .our_vision {
     letter-spacing: var(--ls-text);
-    background-color: transparent;
     color: var(--grey);
-    b {color: var(--blue);}
     position: relative;
     h4 {
         padding-bottom: 32px;
@@ -367,6 +354,9 @@ section>h4 {
     background-image: url('./assets/r.png');
     background-repeat: no-repeat;
     background-size: cover;
+    border: none;
+    border-top: 3px solid var(--dark-blue);
+    border-radius: 0;
     &>h4 { 
         padding-bottom: 32px; 
         color: var(--grey);
@@ -408,37 +398,8 @@ section>h4 {
         position: relative;
         margin-bottom: 8px;
         &:not(:last-child) {margin-bottom: 16px;}
-        /* &::after {
-            content: '';
-            position: absolute;
-            top: 8px;
-            border-top-right-radius: 4px;
-            border-bottom-left-radius: 4px;
-            width: 15px;
-            height: 11px;
-            background-color: var(--green);
-        } */
-
     }
-    &.left { 
-        li::after {
-            left: -24px;
-            transform: rotate(30deg) skew(45deg);
-        }
-    }
-    &.right { 
-        padding-left: 96px;
-        ul {
-            margin-right: 24px;
-        }
-        li::after {
-            right: -24px;
-            transform: rotate(110deg) skew(45deg);
-        }
-    }
-    border-radius: 16px;
 }
-
 
 .phase_item:first-child {
     left: 45%;
@@ -464,7 +425,7 @@ section>h4 {
 
 footer {
     padding: 40px 24px 64px 24px;
-    border-top: 3px solid var(--eegreen);
+    border-top: 3px solid var(--dark-blue);
     color: var(--grey);
     background-image: url('./assets/footer.png');
     background-position: center top;
