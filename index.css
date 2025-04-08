@@ -364,6 +364,9 @@ section>h4 {
 .project_roadmap {
     animation-range: entry 0% cover 20%;
     background-color: transparent;
+    background-image: url('./assets/r.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     &>h4 { 
         padding-bottom: 32px; 
         color: var(--grey);
@@ -377,10 +380,13 @@ section>h4 {
     display: flex;
     flex-direction: column;
     padding: 0 0px;
+    position: relative;
+    margin-bottom: 120px;
 }
 
 .phase_item {
     width: 800px;
+    position: relative;
     padding-bottom: 40px;
     padding-top: 24px;
     background-color: #202229;
@@ -391,7 +397,6 @@ section>h4 {
         margin-bottom: 24px;
         i {
             font-style: normal;
-            color: var(--blue);
             color: var(--gold);
         }
     }
@@ -403,7 +408,7 @@ section>h4 {
         position: relative;
         margin-bottom: 8px;
         &:not(:last-child) {margin-bottom: 16px;}
-        &::after {
+        /* &::after {
             content: '';
             position: absolute;
             top: 8px;
@@ -412,7 +417,7 @@ section>h4 {
             width: 15px;
             height: 11px;
             background-color: var(--green);
-        }
+        } */
 
     }
     &.left { 
@@ -432,6 +437,25 @@ section>h4 {
         }
     }
     border-radius: 16px;
+}
+
+
+.phase_item:first-child {
+    left: 45%;
+    top: 0;
+}
+
+.phase_item:nth-child(2) {
+    top: 280px;
+    left: 10%;
+}
+.phase_item:nth-child(3) {
+    top: 300px;
+    left: 40%;    
+}
+.phase_item:nth-child(4) {
+    bottom: -180px;
+    left: 5%;
 }
 
 .phase_item:hover {
