@@ -78,6 +78,8 @@ section {
     align-items: center;
     border-radius: 16px;
     background-color: var(--green);
+    border: 3px solid var(--grey);
+    color: var(--grey);
     transition: all 0.4s ease;
     animation-name: appear;
     animation-iteration-count: 1;
@@ -105,30 +107,29 @@ section {
 
     animation-timeline: view();
     animation-range: entry 0% cover 32%;
-    &>h4 {
-        margin-bottom: 24px;
-        text-align: center;
-        width: 100%;
-        font-size: 32px;
-        letter-spacing: 3px;
-        color: var(--blue);
-        border-bottom: 2px solid var(--gold);
-        padding-bottom: 16px;
-    }
+}
+section>h4 {
+    margin-bottom: 24px;
+    text-align: center;
+    width: 100%;
+    font-size: 32px;
+    letter-spacing: 3px;
+    border-bottom: 3px solid var(--grey);
+    width: 80%;
+    padding-bottom: 16px;
 }
 
 .gold-table {
-    font-size: 18px;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.6px;
     margin-bottom: 40px;
     width: 680px;
     padding: 24px;
-    border-radius: 4px;
-    border: 1px solid var(--green);
+    border-radius: 16px;
+    text-align: center;
+    color: #000;
     background-color: var(--gold);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
-.left {
+/* .left {
     align-self: start;    
     text-align: left;     
     padding: 24px 32px 24px 40px;
@@ -145,7 +146,17 @@ section {
     border-right: transparent;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+} */
+.left {
+    align-self: start;    
+    text-align: left;     
+    margin-left: 32px;
 }
+.right {
+    margin-right: 32px;
+    align-self: end;
+    text-align: right;  
+} 
 
 .logo {
     display: flex;
@@ -173,7 +184,8 @@ section {
     position: relative;
     overflow: hidden;
     border-radius: 0;
-    border-bottom: 2px solid var(--grey);
+    border: none;
+    border-bottom: 3px solid var(--green);
 }
 
 .hero__content {
@@ -188,18 +200,17 @@ section {
     animation-duration: 1.2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
+    color: white;
     .hero__title {
         font-size: 36px;
         margin-bottom: 40px;
-        letter-spacing: 4px;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        color: white;
     }
     .hero__text {
         font-size: 32px;
         letter-spacing: 0.6px;
         line-height: 1.7;
-        color: white;
     }
 }
 
@@ -232,14 +243,13 @@ section {
     border: 3px solid var(--grey);
     color: var(--grey);
     text-align: center;
-    letter-spacing: 0.4px;
-    line-height: 1.05;
+    letter-spacing: 0.6px;
+    line-height: 1.2;
     .stats__head {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 18px;
-        font-size: 24px;
         svg {
             width: 64px;
             fill:  var(--grey);
@@ -266,19 +276,19 @@ section {
     background-size: cover;
     background-repeat: no-repeat;
     h4 {
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-        color: var(--green);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        color: inherit;
         margin-bottom: 40px;
         padding: 32px 0;
-        background-color: var(--grey);
+        width: 100%;
+        background-color: inherit;
     }
 }
 
 .benefits__list {
     align-self: start;
-    font-size: 18px;
-    letter-spacing: 0.7px;
+    letter-spacing: 0.6px;
     margin-top: 180px;
     color: var(--green);
     li {
@@ -288,7 +298,6 @@ section {
         border: 1px solid var(--gold);
         padding: 7px 10px 7px 32px;
         text-underline-offset: 6.7px;
-        font-size: 22px;
         position: relative;
         &:not(:last-child) { margin-bottom: 24px; }
         &::after {
@@ -311,12 +320,10 @@ section {
     background-color: var(--green);
     color: var(--grey);
     b {color: var(--blue);}
-    border: 2px solid var(--grey);
     position: relative;
     h4 {
         padding-bottom: 32px;
         color: inherit;
-        width: 80%;
     }
     p {
         padding-left: 40px;
@@ -331,22 +338,19 @@ section {
     position: relative;
     top: 0;
     left: 0;
-    width: 740px;
+    /* width: 740px; */
+    width: 70%;
     margin: 24px 0;
-    border: 2px solid var(--grey);
+    border: 3px solid var(--grey);
     border-radius: 16px;
 }
 
 .project_roadmap {
     animation-range: entry 0% cover 20%;
-    background-color: var(--green);
-    border: 2px solid var(--grey);
     &>h4 { 
-        width: 80%;
         padding-bottom: 32px; 
         color: var(--grey);
     }
-
 }
 
 .project_roadmap .phases__list {
@@ -359,12 +363,10 @@ section {
 }
 
 .phase_item {
-    font-size: 20px;
     width: 800px;
     padding-bottom: 40px;
     padding-top: 24px;
     h4 {
-        font-size: 26px;
         margin-bottom: 24px;
         i {
             font-style: normal;
@@ -377,6 +379,7 @@ section {
     }
     li {
         position: relative;
+        margin-bottom: 8px;
         &:not(:last-child) {margin-bottom: 16px;}
         &::after {
             content: '';
@@ -446,14 +449,13 @@ footer {
         top: 50%;
         width: 140px;
         right: 160px;
-        font-size: 20px;
     }
 }
 
 .footer__nav {
     display: flex;
     gap: 16px;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
     display: flex;
     flex-direction: column;
     .nav-link {
@@ -482,23 +484,14 @@ footer .contacts {
         transition: all 0.4s ease-in;
         color: var(--grey);
         text-decoration: none;
-        letter-spacing: 0.8px;
         &:hover {
             color: var(--hover-color);
             text-decoration: underline 2px var(--hover-color);
         }
     }
-    .insta {
-        grid-area: insta;
-       
-    }
-    .linkedin {
-        grid-area: linkedin;
-    }
-    .mail {
-
-        grid-area: mail;
-    }
+    .insta { grid-area: insta; }
+    .linkedin { grid-area: linkedin; }
+    .mail { grid-area: mail; }
 }
 
 .navbar-toggler {
