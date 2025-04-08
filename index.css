@@ -1,10 +1,13 @@
 :root {
     --gold: #fbc11a;
+    --gold: rgb(229, 176, 37);
     --green: #5f6c11;
+    --eegreen: #202229;
+    --green: #3d5e1f;
     --grey: #eae7e0;  
     /* --blue: #4d9699; */
     --blue: #4b6dca;
-    /* --blue: #2a2d35; */
+    --blue: #2a2d35;
     --hover-color: var(--blue);
 
     --fsz-title-primary: 36px;
@@ -65,17 +68,23 @@ header {
     background-color: rgba(234, 231, 224, 0);
     border-bottom: 1px solid var(--gold);
     transition: all 0.5s ease-in;
-    .container-fluid, .navbar-nav {  gap: 16px; }
-        .navbar-nav .nav-link {
-            transition: all 0.4s ease-in;
-            color: var(--green);
-            text-decoration: underline 1px var(--gold);
-            text-underline-offset: 8px;
-            &:hover {
-                color: var(--hover-color);
-                text-decoration: underline 2px var(--hover-color);
-            }
+
+    .container-fluid,
+    .navbar-nav {
+        gap: 16px;
+    }
+
+    .navbar-nav .nav-link {
+        transition: all 0.4s ease-in;
+        color: var(--green);
+        text-decoration: underline 1px var(--gold);
+        text-underline-offset: 8px;
+
+        &:hover {
+            color: var(--hover-color);
+            text-decoration: underline 2px var(--hover-color);
         }
+    }
 }
 
 .header-scrolled { background: rgba(234, 231, 224, 1); }
@@ -88,7 +97,7 @@ section {
     align-items: center;
     border-radius: 16px;
     background-color: var(--green);
-    border: 3px solid var(--grey);
+    border: 3px solid var(--eegreen);
     color: var(--grey);
     transition: all 0.4s ease;
     animation-name: appear;
@@ -137,6 +146,7 @@ section>h4 {
     border-radius: 16px;
     text-align: center;
     color: #000;
+    color: var(--blue);
     background-color: var(--gold);
     border: 3px solid var(--grey);
 }
@@ -376,6 +386,7 @@ section>h4 {
     width: 800px;
     padding-bottom: 40px;
     padding-top: 24px;
+    border: 3px solid var(--gold);
     h4 {
         margin-bottom: 24px;
         i {
@@ -433,7 +444,7 @@ section>h4 {
 
 footer {
     padding: 40px 24px 64px 24px;
-    border-top: 3px solid var(--grey);
+    border-top: 3px solid var(--eegreen);
     color: var(--grey);
     background-image: url('./assets/footer.png');
     background-position: center top;
