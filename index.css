@@ -5,11 +5,20 @@
     /* --blue: #4d9699; */
     --blue: #4b6dca;
     --hover-color: var(--blue);
+
+    --fsz-title-primary: 36px;
+    --fsz-title-secondary: 36px;
+    --ls-title: 3px;
+    --ls-text: 0.6px;
 }
 
 @font-face {
     font-family: Agro;
     src: './assets/font/AgroAI-Regular.woff2';
+}
+@font-face {
+    font-family: Lexend;
+    src: './assets/fonts/Lexend.ttf';
 }
 
 /* ANIMATIONS */
@@ -38,7 +47,7 @@ li { list-style: none;}
 body {
     overflow-x: hidden;
     position: relative;
-    font-family: Agro, sans-serif;
+    font-family: Lexend, sans-serif;
     font-size: 22px;
     background-color: var(--blue);
 }
@@ -112,15 +121,15 @@ section>h4 {
     margin-bottom: 24px;
     text-align: center;
     width: 100%;
-    font-size: 32px;
-    letter-spacing: 3px;
+    font-size: var(--fsz-title-secondary);
+    letter-spacing: var(--ls-title);
     border-bottom: 3px solid var(--grey);
     width: 80%;
     padding-bottom: 16px;
 }
 
 .gold-table {
-    letter-spacing: 0.6px;
+    letter-spacing: var(--ls-text);
     margin-bottom: 40px;
     width: 680px;
     padding: 24px;
@@ -167,10 +176,10 @@ section>h4 {
         margin: -24px -28px -0px -24px;
     }
     .logo_title {
-        font-size: 32px;
+        font-size: var(--fsz-title-secondary);
         color: var(--green);
         padding-bottom: 8px;
-        letter-spacing: 0.6px;
+        letter-spacing: var(--ls-text);
     }
     .nav-link:hover {
         color: var(--hover-color);
@@ -202,14 +211,14 @@ section>h4 {
     animation-fill-mode: forwards;
     color: white;
     .hero__title {
-        font-size: 36px;
+        font-size: var(--fsz-title-primary);
         margin-bottom: 40px;
-        letter-spacing: 3px;
+        letter-spacing: var(--ls-title);
         text-transform: uppercase;
     }
     .hero__text {
-        font-size: 32px;
-        letter-spacing: 0.6px;
+        font-size: var(--fsz-title-secondary);
+        letter-spacing: var(--ls-text);
         line-height: 1.7;
     }
 }
@@ -243,7 +252,7 @@ section>h4 {
     border: 3px solid var(--grey);
     color: var(--grey);
     text-align: center;
-    letter-spacing: 0.6px;
+    letter-spacing: var(--ls-text);
     line-height: 1.2;
     .stats__head {
         display: flex;
@@ -288,14 +297,13 @@ section>h4 {
 
 .benefits__list {
     align-self: start;
-    letter-spacing: 0.6px;
+    letter-spacing: var(--ls-text);
     margin-top: 180px;
-    color: var(--green);
     li {
         width: fit-content;
         border-radius: 16px;
-        background-color: var(--grey);
-        border: 1px solid var(--gold);
+        background-color: var(--green);
+        border: 3px solid var(--grey);
         padding: 7px 10px 7px 32px;
         text-underline-offset: 6.7px;
         position: relative;
@@ -310,13 +318,13 @@ section>h4 {
             width: 15px;
             height: 11px;
             transform: rotate(25.5deg) skew(45deg) ;
-            background-color: var(--green);
+            background-color: var(--grey);
         }
     }
 }
 
 .our_vision {
-    letter-spacing: 0.6px;
+    letter-spacing: var(--ls-text);
     background-color: var(--green);
     color: var(--grey);
     b {color: var(--blue);}
@@ -374,7 +382,7 @@ section>h4 {
         }
     }
     ul  {
-        letter-spacing: 0.6px;
+        letter-spacing: var(--ls-text);
         line-height: 1.5;
     }
     li {
@@ -455,7 +463,7 @@ footer {
 .footer__nav {
     display: flex;
     gap: 16px;
-    letter-spacing: 0.6px;
+    letter-spacing: var(--ls-text);
     display: flex;
     flex-direction: column;
     .nav-link {
