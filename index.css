@@ -17,10 +17,6 @@
 }
 
 @font-face {
-    font-family: Agro;
-    src: './assets/font/AgroAI-Regular.woff2';
-}
-@font-face {
     font-family: Lexend;
     src: './assets/fonts/Lexend.ttf';
 }
@@ -120,14 +116,10 @@ section>h4 {
 
 .gold-table {
     letter-spacing: var(--ls-text);
-    margin-bottom: 40px;
     width: 680px;
     padding: 24px;
     border-radius: 16px;
     text-align: center;
-    color: #000;
-    color: var(--blue);
-    background-color: var(--gold);
     background-color: #202229;
     color: var(--grey);
     border: 3px solid var(--grey);
@@ -136,10 +128,8 @@ section>h4 {
 .left {
     align-self: start;    
     text-align: left;     
-    margin-left: 32px;
 }
 .right {
-    margin-right: 32px;
     align-self: end;
     text-align: right;  
 } 
@@ -166,44 +156,41 @@ section>h4 {
 .hero {
     height: 100vh;
     max-width: 100vw;
-    text-align: center;
     position: relative;
     overflow: hidden;
     border-radius: 0;
     border: none;
     border-bottom: 3px solid var(--green);
 }
-
 .hero__content {
     position: absolute;
+    top:  50%;
+    left: 50%;
+    translate: -50% -50%;
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     z-index: 10;
-    top:  50%;
-    left: 50%;
-    translate: -50% -50%;
-    color: var(--blue);
     animation-name: TextSlideUp;
     animation-duration: 1.2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
     color: white;
-    .hero__title {
-        font-size: var(--fsz-title-primary);
-        margin-bottom: 40px;
-        letter-spacing: var(--ls-title);
-        text-transform: uppercase;
-        width: 60%;
-    }
-    .hero__text {
-        font-size: var(--fsz-title-secondary);
-        letter-spacing: var(--ls-text);
-        line-height: 1.7;
-    }
 }
-
+.hero__title {
+    font-size: var(--fsz-title-primary);
+    margin-bottom: 40px;
+    letter-spacing: var(--ls-title);
+    text-transform: uppercase;
+    width: 60%;
+}
+.hero__text {
+    font-size: var(--fsz-title-secondary);
+    letter-spacing: var(--ls-text);
+    line-height: 1.7;
+}
 .hero-vid {
     position: absolute;
     top: 0;
@@ -215,25 +202,27 @@ section>h4 {
 }
 
 .about {
+    text-align: center;
 }
 
-.features {
-
+.features ul {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .demo-stats {    
     background-color: transparent;
-    p { padding: 0 56px;}
+    text-align: center;
 }
-
-
 .demo-stats__list {
+    margin-top: 16px;
     padding: 24px 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px 24px;
 }
-
 .demo-stats__list__item {
     min-width: 160px;
     display: flex;
@@ -245,7 +234,6 @@ section>h4 {
     background-color: #202229;
     border: 3px solid var(--grey);
     color: var(--grey);
-    text-align: center;
     letter-spacing: var(--ls-text);
     line-height: 1.2;
     transition: all 0.4s ease;
@@ -295,6 +283,7 @@ section>h4 {
 }
 
 .benefits__list {
+
     align-self: start;
     letter-spacing: var(--ls-text);
     margin-top: 180px;
@@ -306,6 +295,8 @@ section>h4 {
         padding: 7px 10px 7px 32px;
         text-underline-offset: 6.7px;
         position: relative;
+        border-bottom-right-radius: 20% 90%; 
+        padding-right: 24px;
         &:not(:last-child) { margin-bottom: 24px; }
         &::after {
             content: '';
@@ -575,7 +566,6 @@ footer .contacts {
     .left, .right { padding: 24px; }
     .benefits {
         background-position: 10% top;
-        li { border-bottom-right-radius: 20% 90%; }
         .gold-table {  width: 85%; }
     }
     .our_vision {
@@ -664,21 +654,25 @@ footer .contacts {
     .benefits .gold-table {width: calc(100% - 16px);}
     .benefits__list {margin-top: 72px;}
     .project_roadmap .phases__list {gap: 40px;}
-    .phase_item:nth-child(2) {
-        padding-left: 0;
-        li:last-child {padding-left: 80px;}
-    }
-    .phase_item:nth-child(4) {
-        padding-left: 0px;
-        padding-bottom: 38px;
-        border-bottom-left-radius: 60% 70%;
-        li:last-child {
-            padding-left: 80px;
-            br { display: none; }
-        }
-    }
     .nav-link.logo_title, footer .nav-link.logo_title {
         font-size: 28px;
+    }
+    .phase_item:first-child {
+        left: 0%;
+        top: 0;
+    }
+    
+    .phase_item:nth-child(2) {
+        top: initial;
+        left: 0;
+    }
+    .phase_item:nth-child(3) {
+        top: initial;
+        left: 0;    
+    }
+    .phase_item:nth-child(4) {
+        bottom: initial;
+        left: 0;
     }
     .logo {
         img {
@@ -698,11 +692,6 @@ footer .contacts {
     .project_roadmap .phases__list {gap: 24px;}
     .phase_item {
         width: calc(100% - 8px);
-        &:nth-child(2) { border-bottom-left-radius: 80% 70%;}
-        &:nth-child(3) { 
-            padding-right: 80px;
-            border-bottom-right-radius: 70% 80%;
-        }
     }
 }
 
@@ -782,25 +771,8 @@ footer .contacts {
             font-size: 20px;
         }
     }
-    .vision-vid { width: calc(100% - 16px); border-radius: 10px;}
-    .project_roadmap>h4 {
-        letter-spacing: 1.8px;
-    }
-    .project_roadmap .phases__list {
-        gap: 8px;
-    }
-    .phase_item {
-        li {line-height: 1.4; }
-        &:first-child, &:nth-child(3) {
-           border-top-right-radius: 40% 20%;
-           border-bottom-right-radius: 70% 40%;
-        }
-        &:nth-child(2), &:last-child {
-            border-top-left-radius: 40% 20%;
-            border-bottom-left-radius: 70% 40%;
-            padding-left: 0;
-        }
-    }
+    .vision-vid { width: calc(100% - 16px); }
+
     footer {
         padding-left: 0;
         padding-right: 0;
@@ -862,15 +834,8 @@ footer .contacts {
     }
     .project_roadmap>h4 {margin-bottom: 0;}
     .phase_item {
-        width: 100%;
         margin-top: 0;
         padding-top: 24px;
-        &:nth-of-type(even) {
-            border-top-left-radius: 0;
-        }
-        &:nth-of-type(odd) {
-            border-top-right-radius: 0;
-        }
         h4 { font-size: 22px; }
         ul {
             margin-top: 0;
