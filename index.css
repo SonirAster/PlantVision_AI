@@ -12,6 +12,7 @@
 
     --fsz-title-primary: 36px;
     --fsz-title-secondary: 34px;
+    --fsz-text: 22px;
     --ls-title: 3px;
     --ls-text: 0.6px;
 }
@@ -49,7 +50,7 @@ body {
     overflow-x: hidden;
     position: relative;
     font-family: Lexend, sans-serif;
-    font-size: 22px;
+    font-size: var(--fsz-text);
     background-color: var(--blue);
 }
 
@@ -74,13 +75,8 @@ header {
         color: var(--grey);
         text-decoration: underline 1px var(--gold);
         text-underline-offset: 8px;
-        &:hover {
-            color: var(--hover-color);
-            text-decoration: underline 2px var(--hover-color);
-        }
     }
 }
-
 .header-scrolled { background: var(--dark-blue); }
 
 section {
@@ -99,7 +95,6 @@ section {
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-
     animation-timeline: view();
     animation-range: entry 0% cover 32%;
 }
@@ -161,9 +156,6 @@ section>h4 {
         color: var(--grey);
         padding-bottom: 8px;
         letter-spacing: var(--ls-text);
-    }
-    .nav-link:hover {
-        color: var(--hover-color);
     }
 }
 
@@ -296,9 +288,6 @@ section>h4 {
         }
     }
 }
-.demo-stats__list__item:hover {
-    transform: translate(0, -16px);
-}
 
 .benefits {
     padding-top: 0;
@@ -377,7 +366,6 @@ section>h4 {
         color: var(--grey);
     }
 }
-
 .project_roadmap .phases__list {
     gap: 20px;
     margin-top: 24px;
@@ -416,7 +404,6 @@ section>h4 {
         &:not(:last-child) {margin-bottom: 16px;}
     }
 }
-
 .phase_item:first-child {
     left: 45%;
     top: 0;
@@ -433,9 +420,6 @@ section>h4 {
     bottom: -180px;
     left: 5%;
 }
-.phase_item:hover {
-    transform: translate(0, -16px);
-}
 
 footer {
     padding: 40px 24px 64px 24px;
@@ -447,17 +431,17 @@ footer {
     background-size: cover;
     position: relative;
     .container {
-        display: flex;
-        gap: 40px;
-        flex-wrap: wrap;
-        justify-content: space-between;
         padding: 0;
+    }
+    .footer-items {
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
     }
     .logo {
         padding-top: 8px;
         width: fit-content;
         height: 100%;
-        width: 100%;
         .logo_title { color: var(--grey); }
     }
     .name {
@@ -477,10 +461,6 @@ footer {
         transition: all 0.4s ease-in;
         text-decoration: underline 1px var(--gold);
         text-underline-offset: 8px;
-        &:hover {
-            color: var(--hover-color);
-            text-decoration: underline 2px var(--hover-color);
-        }
     }
 }
 footer .contacts {
@@ -508,7 +488,21 @@ footer .contacts {
     .mail { grid-area: mail; }
 }
 
-
+@media(hover:hover) {
+    header .navbar-collapse .nav-link:hover, 
+    .footer__nav .nav-link:hover,
+    .contacts .nav-link:hover {
+        color: var(--hover-color);
+        text-decoration: underline 2px var(--hover-color);
+    }
+    .logo:hover .logo_title {color: var(--hover-color);}
+    .demo-stats__list__item:hover {
+        transform: translate(0, -16px);
+    }
+    .phase_item:hover {
+        transform: translate(0, -16px);
+    }
+}
 
 @media (max-width: 1680px) {
     .phase_item:nth-child(2) {
@@ -524,7 +518,17 @@ footer .contacts {
            justify-content: right;
         }
     }
-    
+    .hero__title {
+        width: 100%;
+    }
+    .benefits {
+        background-position: 40% top;
+        .gold-table { width: 70%; }
+    }
+    .our_vision p {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
     .project_roadmap {
         background-position: -140px -70px;
     }
@@ -576,7 +580,6 @@ footer .contacts {
     }
     .benefits {
         background-position: 45% top;
-        .gold-table { width: 70%; }
     }
     .benefits__list {
         margin-top: 120px;
