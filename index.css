@@ -54,14 +54,14 @@ body {
 }
 
 header {
-    padding: 0 120px;
-    margin-bottom: 0px;
     position: fixed;
-    width: 100%;
-    z-index: 1000;
-    padding-top: 16px;
     top: 0;
     left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 120px;
+    margin-bottom: 0px;
+    padding-top: 16px;
     background-color: rgba(234, 231, 224, 0);
     border-bottom: 1px solid var(--gold);
     transition: all 0.5s ease-in;
@@ -167,9 +167,27 @@ section>h4 {
     }
 }
 
+.navbar-toggler {
+    outline: none;
+    border: none;
+    svg {
+        transition: all 0.4s ease;
+        width: 40px;
+        height: 40px;
+        stroke: var(--grey);
+        background: none;
+        outline: none;
+        border: none;
+    }
+}
+
+.header-scrolled .navbar-toggler svg {
+    stroke: var(--gold);
+}
+
 .hero {
     height: 100vh;
-    max-width: 100vw;
+    width: 100vw;
     position: relative;
     overflow: hidden;
     border-radius: 0;
@@ -210,8 +228,8 @@ section>h4 {
     top: 0;
     left: 0;
     z-index: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -278,7 +296,6 @@ section>h4 {
         }
     }
 }
-
 .demo-stats__list__item:hover {
     transform: translate(0, -16px);
 }
@@ -297,7 +314,6 @@ section>h4 {
         background-color: none;
     }
 }
-
 .benefits__list {
     align-self: start;
     letter-spacing: var(--ls-text);
@@ -335,7 +351,6 @@ section>h4 {
         text-align: center;
     }
 }
-
 .vision-vid {
     position: relative;
     top: 0;
@@ -406,7 +421,6 @@ section>h4 {
     left: 45%;
     top: 0;
 }
-
 .phase_item:nth-child(2) {
     top: 280px;
     left: 10%;
@@ -419,7 +433,6 @@ section>h4 {
     bottom: -180px;
     left: 5%;
 }
-
 .phase_item:hover {
     transform: translate(0, -16px);
 }
@@ -454,7 +467,6 @@ footer {
         right: 160px;
     }
 }
-
 .footer__nav {
     display: flex;
     gap: 16px;
@@ -471,7 +483,6 @@ footer {
         }
     }
 }
-
 footer .contacts {
     display: flex;
     gap: 24px;
@@ -497,18 +508,7 @@ footer .contacts {
     .mail { grid-area: mail; }
 }
 
-.navbar-toggler {
-    outline: none;
-    border: none;
-    svg {
-        width: 40px;
-        height: 40px;
-        stroke: var(--green);
-        background: none;
-        outline: none;
-        border: none;
-    }
-}
+
 
 @media (max-width: 1680px) {
     .phase_item:nth-child(2) {
@@ -517,6 +517,14 @@ footer .contacts {
     }
 }
 @media (max-width: 1480px) {
+    header {
+        padding: 16px 80px 8px 80px;
+        .navbar-nav  {
+           width: 100%;
+           justify-content: right;
+        }
+    }
+    
     .project_roadmap {
         background-position: -140px -70px;
     }
@@ -538,11 +546,7 @@ footer .contacts {
         left: 0%;
     }
 }
-
 @media (max-width: 1250px) {
-    footer {
-        background-position: center 70%;
-    }
     .benefits {
         background-position: 30% top;
     }
@@ -550,18 +554,29 @@ footer .contacts {
         top: 250px;
         left: 30%;    
     }
+    footer {
+        background-position: center 70%;
+    }
 }
 
 @media (max-width: 1200px) {
     header {
         padding: 16px 8px 0 8px;
-        background-color: var(--grey);
+        white-space: nowrap;
+        .navbar-nav  {
+            gap: 8px;
+        }
+        .logo {
+            margin-right: 8px;
+            img {
+                margin: -24px -28px -0px -40px;
+            }
+        }
+
     }
     .benefits {
         background-position: 45% top;
-        .gold-table {
-            width: 60%;
-        }
+        .gold-table { width: 70%; }
     }
     .benefits__list {
         margin-top: 120px;
@@ -593,21 +608,22 @@ footer .contacts {
     }
 }
 
+
 @media (max-width: 991px) {
     header {
-        .container-fluid {
-            gap: 8px;
-            position: relative;
+        .container-fluid { position: relative; }
+        .navbar-nav  {
+            justify-content: start;
+            gap: 24px;
         }
         .navbar ul {
-            font-size: 20px;
-            margin-top: 8px;
-            margin-left: 24px;
+            flex-direction: row;
+            margin-left: 8px;
         }
         .navbar-toggler {
             position: absolute;
             top: 0;
-            right: 16px;
+            right: 0px;
         }
     }
     .hero__content {
@@ -682,6 +698,13 @@ footer .contacts {
 
 @media (max-width: 767px) {
     section { margin-bottom: 40px; }
+    header {
+        .navbar-nav  {
+            justify-content: start;
+            flex-wrap: wrap;
+            line-height: 1;
+        }
+    }
     .hero__content {
         .hero__title {
             font-size: 28px;
@@ -707,7 +730,7 @@ footer .contacts {
 }
 
 @media (max-width: 600px) {
-    body {  font-size: 18px; }
+    /* body {  font-size: 18px; } */
     .benefits .gold-table {width: calc(100% - 16px);}
     .benefits__list {margin-top: 72px;}
     .project_roadmap .phases__list {gap: 40px;}
@@ -723,7 +746,7 @@ footer .contacts {
     }
     .logo {
         img {
-            width: 86px;
+            width: 90px;
             margin: -24px -26px 0px -0px;
         }
     }
@@ -753,16 +776,8 @@ footer .contacts {
         padding: 0;
     }
     header {
-        padding: 0;
-        .logo {
-            .logo_title {
-                font-size: 24px;
-                padding-bottom: 4px;
-            }
-            img {
-                width: 70px;
-                margin: -14px -22px 0px -4px;
-            }
+        .navbar {
+            padding: 8px;
         }
         .navbar-toggler {
             svg {
@@ -851,27 +866,9 @@ footer .contacts {
 
 @media (max-width: 380px) {
     header {
-        .logo {
-            .logo_title {
-                font-size: 22px;
-                padding-top: 4px;
-            }
-            img {
-                width: 70px;
-                margin: -10px -22px 0px -16px;
-            }
-        }
-        .navbar-toggler {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
         .navbar-collapse ul {
             flex-direction: column;
-            margin: 0;
-            margin-top: 4px;
-            padding-left: 8px;
-            gap: 8px;
+            gap: 16px;
         }
     }
 }
