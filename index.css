@@ -546,6 +546,10 @@ footer .contacts {
     .benefits {
         background-position: 30% top;
     }
+    .phase_item:nth-child(3) {
+        top: 250px;
+        left: 30%;    
+    }
 }
 
 @media (max-width: 1200px) {
@@ -566,7 +570,27 @@ footer .contacts {
             width: 90%;
         }
     }
-    footer { padding: 40px 24px 40px 24px; }
+    .project_roadmap {
+        background-position: -160px -70px;
+        margin-bottom: 40px;
+        .phases__list {
+            margin-bottom: 0;
+            gap: 40px;
+        }
+    }
+    .phases__list .phase_item {
+        top: 0;
+        left: 0;
+        width: 80%;
+    }
+    .phase_item:first-child,
+    .phase_item:nth-child(3) {
+        align-self: end;
+    }
+    footer {
+        background-position: center 82%;
+        padding: 40px 24px 40px 24px; 
+    }
 }
 
 @media (max-width: 991px) {
@@ -615,13 +639,8 @@ footer .contacts {
         }
     }
     .vision-vid { width: calc(100% - 40px); }
-    .phase_item {
-        width: calc(100% - 24px);
-        &.left {
-            &:first-child {
-                padding-right: 20%;
-            }
-        }
+    .project_roadmap {
+        background-position: 55% -40px;
     }
     footer {
         padding-bottom: 16px;
@@ -649,6 +668,16 @@ footer .contacts {
     .our_vision>h4 { padding: 24px 0; }
     .our_vision {padding-top: 8px;}
     .phase_item>h4 { font-size: 24px; }
+    .project_roadmap {
+        background-position: 45% -40px;
+    }
+    .phases__list {
+        margin-bottom: 40px;
+        gap: 24px;
+    }
+    .phases__list .phase_item {
+        width: 100%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -672,17 +701,6 @@ footer .contacts {
     .benefits__list {
         padding-left: 16px;
     }
-    .phase_item {
-        &.left li:nth-child(2) {
-           padding-bottom: 16px;
-           br {display: none;}
-        }
-        &.right li:last-child { 
-            padding-bottom: 0;
-            padding-left: 20px;
-            br {display: none;}
-        }
-    }
     footer .name {
         right: 140px;
     }
@@ -696,22 +714,12 @@ footer .contacts {
     .nav-link.logo_title, footer .nav-link.logo_title {
         font-size: 28px;
     }
-    .phase_item:first-child {
-        left: 0%;
-        top: 0;
-    }
-    
-    .phase_item:nth-child(2) {
-        top: initial;
-        left: 0;
-    }
-    .phase_item:nth-child(3) {
-        top: initial;
-        left: 0;    
-    }
-    .phase_item:nth-child(4) {
-        bottom: initial;
-        left: 0;
+    .project_roadmap {
+        background-position: 35% -16px;
+        margin-bottom: 40px;
+        .phases__list {
+            margin-top: 40px;
+        }
     }
     .logo {
         img {
@@ -729,9 +737,6 @@ footer .contacts {
     }
     .benefits__list {margin-top: 40px;}
     .project_roadmap .phases__list {gap: 24px;}
-    .phase_item {
-        width: calc(100% - 8px);
-    }
 }
 
 @media (max-width: 481px) {
@@ -810,7 +815,9 @@ footer .contacts {
         }
     }
     .vision-vid { width: calc(100% - 16px); }
-
+    .project_roadmap {
+        background-position: 34% -16px;
+    }
     footer {
         padding-left: 0;
         padding-right: 0;
@@ -831,6 +838,14 @@ footer .contacts {
             margin-top: 44px;
             margin-bottom: 16px;
         }
+    }
+}
+
+@media (max-width: 460px) {
+    .project_roadmap {
+        margin-bottom: 64px;
+        background-position: 32% 0px;
+        border-bottom: 3px solid var(--dark-blue);
     }
 }
 
@@ -870,18 +885,7 @@ footer .contacts {
             font-size: 18px;
         }
     }
-    .project_roadmap>h4 {margin-bottom: 0;}
-    .phase_item {
-        margin-top: 0;
-        padding-top: 24px;
-        h4 { font-size: 22px; }
-        ul {
-            margin-top: 0;
-            padding-left: 12px;
-            
-        }
-        li {  font-size: 18px; }
-    }
+
     footer {
         .contacts {
             margin-left: 16px;
