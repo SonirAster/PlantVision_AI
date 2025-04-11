@@ -551,8 +551,14 @@ footer .contacts {
     }
 }
 @media (max-width: 1250px) {
+    header {        
+        padding: 16px 40px 8px 40px;
+    }
     .benefits {
         background-position: 30% top;
+    }
+    .benefits__list {
+        margin-top: 140px;
     }
     .phase_item:nth-child(3) {
         top: 250px;
@@ -562,7 +568,6 @@ footer .contacts {
         background-position: center 70%;
     }
 }
-
 @media (max-width: 1200px) {
     header {
         padding: 16px 8px 0 8px;
@@ -578,6 +583,10 @@ footer .contacts {
         }
 
     }
+    .hero__content {
+        width: calc(100% - 56px);
+    }
+    .hero__text { margin-top: 16px; }
     .benefits {
         background-position: 45% top;
     }
@@ -588,6 +597,14 @@ footer .contacts {
             width: 90%;
         }
     }
+    .our_vision {
+        padding-bottom: 8px;
+        p {
+            padding: 0 32px;
+            width: 90%;
+        }
+    }
+    .vision-vid { width: 80%; }
     .project_roadmap {
         background-position: -160px -70px;
         margin-bottom: 40px;
@@ -611,8 +628,12 @@ footer .contacts {
     }
 }
 
-
 @media (max-width: 991px) {
+    :root {
+        --fsz-title-primary: 32px;
+        --fsz-title-secondary: 30px;
+        --fsz-text: 22px;
+    }
     header {
         .container-fluid { position: relative; }
         .navbar-nav  {
@@ -630,34 +651,31 @@ footer .contacts {
         }
     }
     .hero__content {
+        width: calc(100% - 64px);
         .hero__title {
-            font-size: 32px;
             margin-bottom: 40px;
         }
         .hero__text {
+            width: 90%;
             font-size: 28px;
         }
     }
     .demo-stats__list {
-        margin: 0 24px;
-        padding: 24px;
+        padding: 0 24px;
         grid-template-columns: repeat(2, 1fr);
         gap: 32px 24px;
     }
-    .gold-table {  width: calc(100% - 80px); }
-    .left, .right { padding: 24px; }
     .benefits {
         background-position: 10% top;
         .gold-table {  width: 85%; }
     }
     .our_vision {
-        padding-bottom: 8px;
         p {
-            padding: 0 32px;
+            padding: 0 0px;
             width: 100%;
         }
     }
-    .vision-vid { width: calc(100% - 40px); }
+    .vision-vid { width: 100%; }
     .project_roadmap {
         background-position: 55% -40px;
     }
@@ -733,7 +751,6 @@ footer .contacts {
 }
 
 @media (max-width: 600px) {
-    /* body {  font-size: 18px; } */
     .benefits .gold-table {width: calc(100% - 16px);}
     .benefits__list {margin-top: 72px;}
     .project_roadmap .phases__list {gap: 40px;}
