@@ -64,7 +64,7 @@
                     <b>GreenSence AI</b> is an intelligent farming assistant that empowers agricultural professionals with real-time diagnostics, data-driven decisions, and automated farm operations. By combining satellite imagery, AI diagnostics, and sensor data, we help you identify plant diseases, spot nutrient imbalances, and take action faster — for healthier crops and higher yields.
                 </p>
             </section>
-            <section class="features">
+            <section class="features" id="features">
                 <h4>GreenSence AI Features</h4>
                 <ul class="leaves">
                     <li>AI-Powered Diagnosis
@@ -239,6 +239,9 @@
             <div class="footer-items">
                 <ul class="footer__nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#benefits">Product Benefits</a>
                     </li>
                     <li class="nav-item">
@@ -277,9 +280,9 @@
         const navHeight = document.querySelector('.navbar').offsetHeight;
         
         document.documentElement.style.setProperty(
-            '--scroll-padding', navHeight + 'px' );
-
-
+            '--scroll-padding', navHeight + 'px' 
+        );
+        
         window.addEventListener('scroll', () => {
             if (window.scrollY >= 40) {
                 nav.classList.add('header-scrolled')
