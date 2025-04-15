@@ -20,7 +20,7 @@
 }
 
 /* ANIMATIONS */
-@keyframes TextSlideUp {
+/*@keyframes TextSlideUp {
     0% { transform: translateY(200px); }
     100% { transform: translateY(0); }
 }
@@ -33,7 +33,7 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
 
 html {
     scroll-behavior: smooth;
@@ -70,6 +70,7 @@ header {
     .navbar-nav .nav-link {
         transition: all 0.4s ease-in;
         color: var(--grey);
+        color: blue;
         text-decoration: underline 1px var(--gold);
         text-underline-offset: 8px;
     }
