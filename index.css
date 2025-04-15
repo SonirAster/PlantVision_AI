@@ -300,7 +300,8 @@ section>h4 {
         margin-bottom: 40px;
         padding: 32px 0;
         /* mac */
-        margin-top: 32px;
+        border: 1px solid red;
+        padding-top: 32px;
 
         width: 100%;
         background-color: none;
@@ -334,6 +335,8 @@ section>h4 {
     /* mac */
     text-align: center;
     h4 {
+        border: 1px solid red;
+        width: 80%;
         padding-bottom: 32px;
         color: inherit;
     }
@@ -397,7 +400,7 @@ section>h4 {
         i {
             font-style: normal;
             color: var(--gold);
-            color: purple;
+            border: 1px solid red;
         }
     }
     ul  {
@@ -433,6 +436,8 @@ footer {
     display: block;
     max-width: 100vw;
     max-height: 600px;
+    box-sizing: border-box;
+    border: 2px solid red;
 
     padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--dark-blue);
