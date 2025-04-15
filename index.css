@@ -423,6 +423,7 @@ section>h4 {
 }
 
 footer {
+    max-width: 100vw;
     padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--dark-blue);
     color: var(--grey);
