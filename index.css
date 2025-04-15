@@ -24,7 +24,7 @@
     0% { transform: translateY(200px); }
     100% { transform: translateY(0); }
 }
-/* @keyframes appear {
+@keyframes appear {
     from {
         opacity: 0;
         transform: translateY(200px);
@@ -33,7 +33,7 @@
         opacity: 1;
         transform: translateY(0);
     }
-} */
+}
 
 html {
     scroll-behavior: smooth;
@@ -60,8 +60,7 @@ header {
     padding: 0 120px;
     margin-bottom: 0px;
     padding-top: 16px;
-    background-color: pink;
-    /* background-color: rgba(234, 231, 224, 0); */
+    background-color: rgba(234, 231, 224, 0);
     border-bottom: 1px solid var(--gold);
     transition: all 0.5s ease-in;
     .container-fluid,
@@ -88,13 +87,14 @@ section {
     background-color: var(--dark-blue);
     color: var(--grey);
     transition: all 0.4s ease;
-    /* animation-name: appear; */
+    animation-name: appear;
     animation-iteration-count: 1;
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
     animation-timeline: view();
     animation-range: entry 0% cover 32%;
+
 }
 section>h4 {
     margin-bottom: 24px;
