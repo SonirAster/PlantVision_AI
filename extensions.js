@@ -1,10 +1,114 @@
 const SVG_Thumb = `<svg width="24px" height="24px" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29398 20.4966C4.56534 20.4966 4 19.8827 4 19.1539V12.3847C4 11.6559 4.56534 11.042 5.29398 11.042H8.12364L10.8534 4.92738C10.9558 4.69809 11.1677 4.54023 11.4114 4.50434L11.5175 4.49658C12.3273 4.49658 13.0978 4.85402 13.6571 5.48039C14.2015 6.09009 14.5034 6.90649 14.5034 7.7535L14.5027 8.92295L18.1434 8.92346C18.6445 8.92346 19.1173 9.13931 19.4618 9.51188L19.5612 9.62829C19.8955 10.0523 20.0479 10.6054 19.9868 11.1531L19.1398 18.742C19.0297 19.7286 18.2529 20.4966 17.2964 20.4966H8.69422H5.29398ZM11.9545 6.02658L9.41727 11.7111L9.42149 11.7693L9.42091 19.042H17.2964C17.4587 19.042 17.6222 18.8982 17.6784 18.6701L17.6942 18.5807L18.5412 10.9918C18.5604 10.8194 18.5134 10.6486 18.4189 10.5287C18.3398 10.4284 18.2401 10.378 18.1434 10.378H13.7761C13.3745 10.378 13.0488 10.0524 13.0488 9.65073V7.7535C13.0488 7.2587 12.8749 6.78825 12.5721 6.44915C12.4281 6.28794 12.2615 6.16343 12.0824 6.07923L11.9545 6.02658ZM7.96636 12.4966H5.45455V19.042H7.96636V12.4966Z" fill="white"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29398 20.4966C4.56534 20.4966 4 19.8827 4 19.1539V12.3847C4 11.6559 4.56534 11.042 5.29398 11.042H8.12364L10.8534 4.92738C10.9558 4.69809 11.1677 4.54023 11.4114 4.50434L11.5175 4.49658C12.3273 4.49658 13.0978 4.85402 13.6571 5.48039C14.2015 6.09009 14.5034 6.90649 14.5034 7.7535L14.5027 8.92295L18.1434 8.92346C18.6445 8.92346 19.1173 9.13931 19.4618 9.51188L19.5612 9.62829C19.8955 10.0523 20.0479 10.6054 19.9868 11.1531L19.1398 18.742C19.0297 19.7286 18.2529 20.4966 17.2964 20.4966H8.69422H5.29398ZM11.9545 6.02658L9.41727 11.7111L9.42149 11.7693L9.42091 19.042H17.2964C17.4587 19.042 17.6222 18.8982 17.6784 18.6701L17.6942 18.5807L18.5412 10.9918C18.5604 10.8194 18.5134 10.6486 18.4189 10.5287C18.3398 10.4284 18.2401 10.378 18.1434 10.378H13.7761C13.3745 10.378 13.0488 10.0524 13.0488 9.65073V7.7535C13.0488 7.2587 12.8749 6.78825 12.5721 6.44915C12.4281 6.28794 12.2615 6.16343 12.0824 6.07923L11.9545 6.02658ZM7.96636 12.4966H5.45455V19.042H7.96636V12.4966Z" fill="currentColor"></path></svg>`
 
+export const DisableInputExtension = {
+  name: 'DisableInput',
+  type: 'effect',
+  match: ({ trace }) =>
+    trace.type === 'ext_disableInput' || trace.payload?.name === 'ext_disableInput',
+  effect: ({ trace }) => {
+    const { isDisabled } = trace.payload
+
+    function disableInput() {
+      const chatDiv = document.getElementById('voiceflow-chat')
+
+      if (chatDiv) {
+        const shadowRoot = chatDiv.shadowRoot
+        if (shadowRoot) {
+          const v3InputContainerClass = '.vfrc-input-container';
+          const chatInput = shadowRoot.querySelector(v3InputContainerClass) || shadowRoot.querySelector('.vfrc-chat-input');
+          const textarea = shadowRoot.querySelector(v3InputContainerClass + ' textarea') || shadowRoot.querySelector(
+            'textarea[id^="vf-chat-input--"]'
+          );
+          const v3Buttons = shadowRoot.querySelectorAll(v3InputContainerClass + ' button');
+          const button = shadowRoot.querySelector('.vfrc-chat-input--button')
+
+          if (chatInput && textarea && (v3Buttons.length > 0 || button)) {
+            // Add a style tag if it doesn't exist
+            let styleTag = shadowRoot.querySelector('#vf-disable-input-style')
+            if (!styleTag) {
+              styleTag = document.createElement('style')
+              styleTag.id = 'vf-disable-input-style'
+              styleTag.textContent = `
+                .vf-no-border, .vf-no-border * {
+                  border: none !important;
+                }
+                .vf-hide-button {
+                  display: none !important;
+                }
+              `
+              shadowRoot.appendChild(styleTag)
+            }
+
+            function updateInputState() {
+              textarea.disabled = isDisabled
+              if (!isDisabled) {
+                textarea.placeholder = 'Message...'
+                chatInput.classList.remove('vf-no-border')
+                if (v3Buttons.length > 0) {
+                  v3Buttons.forEach(b => b.classList.remove('vf-hide-button'));
+                } else {
+                  button.classList.remove('vf-hide-button')
+                }
+                // Restore original value getter/setter
+                Object.defineProperty(
+                  textarea,
+                  'value',
+                  originalValueDescriptor
+                )
+              } else {
+                textarea.placeholder = ''
+                chatInput.classList.add('vf-no-border')
+                if (v3Buttons.length > 0) {
+                  v3Buttons.forEach(b => b.classList.add('vf-hide-button'));
+                  textarea.style.backgroundColor = 'transparent';
+                } else {
+                  button.classList.add('vf-hide-button')
+                }
+                Object.defineProperty(textarea, 'value', {
+                  get: function () {
+                    return ''
+                  },
+                  configurable: true,
+                })
+              }
+
+              // Trigger events to update component state
+              textarea.dispatchEvent(
+                new Event('input', { bubbles: true, cancelable: true })
+              )
+              textarea.dispatchEvent(
+                new Event('change', { bubbles: true, cancelable: true })
+              )
+            }
+
+            // Store original value descriptor
+            const originalValueDescriptor = Object.getOwnPropertyDescriptor(
+              HTMLTextAreaElement.prototype,
+              'value'
+            )
+
+            // Initial update
+            updateInputState()
+          } else {
+            console.error('Chat input, textarea, or button not found')
+          }
+        } else {
+          console.error('Shadow root not found')
+        }
+      } else {
+        console.error('Chat div not found')
+      }
+    }
+
+    disableInput()
+  },
+}
+
 export const FormExtension = {
   name: 'Forms',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_form' || trace.payload.name === 'ext_form',
+    trace.type === 'ext_form' || trace.payload?.name === 'ext_form',
   render: ({ trace, element }) => {
     const formContainer = document.createElement('form')
 
@@ -85,7 +189,7 @@ export const MapExtension = {
   name: 'Maps',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_map' || trace.payload.name === 'ext_map',
+    trace.type === 'ext_map' || trace.payload?.name === 'ext_map',
   render: ({ trace, element }) => {
     const GoogleMap = document.createElement('iframe')
     const { apiKey, origin, destination, zoom, height, width } = trace.payload
@@ -105,7 +209,7 @@ export const VideoExtension = {
   name: 'Video',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_video' || trace.payload.name === 'ext_video',
+    trace.type === 'ext_video' || trace.payload?.name === 'ext_video',
   render: ({ trace, element }) => {
     const videoElement = document.createElement('video')
     const { videoURL, autoplay, controls } = trace.payload
@@ -131,7 +235,7 @@ export const TimerExtension = {
   name: 'Timer',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_timer' || trace.payload.name === 'ext_timer',
+    trace.type === 'ext_timer' || trace.payload?.name === 'ext_timer',
   render: ({ trace, element }) => {
     const { duration } = trace.payload || 5
     let timeLeft = duration
@@ -157,7 +261,7 @@ export const FileUploadExtension = {
   name: 'FileUpload',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_fileUpload' || trace.payload.name === 'ext_fileUpload',
+    trace.type === 'ext_fileUpload' || trace.payload?.name === 'ext_fileUpload',
   render: ({ trace, element }) => {
     const fileUploadContainer = document.createElement('div')
     fileUploadContainer.innerHTML = `
@@ -228,7 +332,7 @@ export const KBUploadExtension = {
   name: 'KBUpload',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_KBUpload' || trace.payload.name === 'ext_KBUpload',
+    trace.type === 'ext_KBUpload' || trace.payload?.name === 'ext_KBUpload',
   render: ({ trace, element }) => {
     const apiKey = trace.payload.apiKey || null
     const maxChunkSize = trace.payload.maxChunkSize || 1000
@@ -314,7 +418,7 @@ export const DateExtension = {
   name: 'Date',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_date' || trace.payload.name === 'ext_date',
+    trace.type === 'ext_date' || trace.payload?.name === 'ext_date',
   render: ({ trace, element }) => {
     const formContainer = document.createElement('form')
 
@@ -416,7 +520,7 @@ export const ConfettiExtension = {
   name: 'Confetti',
   type: 'effect',
   match: ({ trace }) =>
-    trace.type === 'ext_confetti' || trace.payload.name === 'ext_confetti',
+    trace.type === 'ext_confetti' || trace.payload?.name === 'ext_confetti',
   effect: ({ trace }) => {
     const canvas = document.querySelector('#confetti-canvas')
 
@@ -435,7 +539,7 @@ export const FeedbackExtension = {
   name: 'Feedback',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_feedback' || trace.payload.name === 'ext_feedback',
+    trace.type === 'ext_feedback' || trace.payload?.name === 'ext_feedback',
   render: ({ trace, element }) => {
     const feedbackContainer = document.createElement('div')
 
@@ -526,3 +630,4 @@ export const FeedbackExtension = {
     element.appendChild(feedbackContainer)
   },
 }
+
