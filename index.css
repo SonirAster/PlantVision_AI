@@ -299,6 +299,9 @@ section>h4 {
         color: inherit;
         margin-bottom: 40px;
         padding: 32px 0;
+        /* mac */
+        margin-top: 32px;
+
         width: 100%;
         background-color: none;
     }
@@ -328,6 +331,8 @@ section>h4 {
     letter-spacing: var(--ls-text);
     color: var(--grey);
     position: relative;
+    /* mac */
+    text-align: center;
     h4 {
         padding-bottom: 32px;
         color: inherit;
@@ -392,6 +397,7 @@ section>h4 {
         i {
             font-style: normal;
             color: var(--gold);
+            color: purple;
         }
     }
     ul  {
@@ -423,6 +429,11 @@ section>h4 {
 }
 
 footer {
+    /* mac */
+    display: block;
+    max-width: 100vw;
+    max-height: 600px;
+
     padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--dark-blue);
     color: var(--grey);
@@ -486,7 +497,7 @@ footer .contacts {
     }
     .insta { grid-area: insta; }
     .linkedin { grid-area: linkedin; }
-    .mail { grid-area: mail; }
+    .mail { grid-area: mail; color: var(--gold); }
 }
 
 @media(hover:hover) {
