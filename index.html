@@ -46,6 +46,30 @@
             </div>
         </nav>
     </header> -->
+    <!-- <canvas id="confetti-canvas"></canvas>
+    <div id="flat-chat"></div>
+    <div id="voiceflow-chat-frame"></div>
+    <style>
+        body {
+          background-color: #f9f9f9;
+        }
+        #flat-chat {
+          width: 100vw;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        #confetti-canvas {
+          position: fixed;
+          z-index: 999;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none;
+        }
+      </style> -->
     <section class="hero">
         <div class="hero__content">
             <h3 class="hero__title">AI-Powered Solution for Smarter Farming </h3>
@@ -272,6 +296,52 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script type="module">
+        import {
+            VideoExtension,
+            TimerExtension,
+            FormExtension,
+            MapExtension,
+            FileUploadExtension,
+            KBUploadExtension,
+            DateExtension,
+            ConfettiExtension,
+            FeedbackExtension
+        } from '/extensions.js';
+
+        (function (d, t) {
+            var v = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            v.onload = function () {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '65e8846e905ec742d67e774f' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'development',
+                    user: { name: 'Demo User', },
+                    render: { mode: 'overlay', },
+                    autostart: false,
+                    allowDangerousHTML: true,
+                    assistant: {
+                        extensions: [
+                            VideoExtension,
+                            TimerExtension,
+                            FormExtension,
+                            MapExtension,
+                            FileUploadExtension,
+                            KBUploadExtension,
+                            DateExtension,
+                            ConfettiExtension,
+                            FeedbackExtension,
+                        ],
+                    },
+                });
+            };
+            v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
+            v.type = 'text/javascript';
+            s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
     <script type="text/javascript">
         (function(d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -290,7 +360,8 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
     <script>
         const nav = document.querySelector('header');
         const navHeight = document.querySelector('.navbar').offsetHeight;
