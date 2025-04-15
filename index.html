@@ -297,6 +297,9 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="./extensions.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
@@ -316,59 +319,7 @@
                 nav.classList.remove('header-scrolled')
             }
         });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script type="module">
-    import {
-        DisableInputExtension,
-        VideoExtension,
-        TimerExtension,
-        FormExtension,
-        MapExtension,
-        FileUploadExtension,
-        KBUploadExtension,
-        DateExtension,
-        ConfettiExtension,
-        FeedbackExtension
-    } from '/extensions.js';
-
-    (function (d, t) {
-        var v = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        v.onload = function () {
-            window.voiceflow.chat.load({
-                verify: { projectID: '66c367ef77162a334f4bf64f' },
-                url: 'https://general-runtime.voiceflow.com',
-                versionID: 'development',
-                user: {
-                    name: 'Demo User',
-                },
-                render: {
-                    mode: 'overlay',
-                },
-                autostart: true,
-                allowDangerousHTML: true,
-                assistant: {
-                    extensions: [
-                        DisableInputExtension,
-                        VideoExtension,
-                        TimerExtension,
-                        FormExtension,
-                        MapExtension,
-                        FileUploadExtension,
-                        KBUploadExtension,
-                        DateExtension,
-                        ConfettiExtension,
-                        FeedbackExtension,
-                    ],
-                },
-            });
-        };
-        v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
-        v.type = 'text/javascript';
-        s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-</script>
+    </script>
 </body>
 
 </html>
