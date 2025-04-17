@@ -294,7 +294,7 @@
             </div>
         </div>
     </footer>
-    <!-- <script type="module">
+    <!-- <script defer type="module">
         import { FileUploadExtension, KBUploadExtension } from '/extensions.js';
 
         (function (d, t) {
@@ -302,14 +302,11 @@
                 s = d.getElementsByTagName(t)[0];
             v.onload = function () {
                 window.voiceflow.chat.load({
-                    verify: { projectID: '65e8846e905ec742d67e774f' },
-                    //verify: { projectID: '67f51b0761af1de5274ce933' },
+                    verify: { projectID: '6800d6bc037becb708868134' },
                     url: 'https://general-runtime.voiceflow.com',
                     versionID: 'production',
-                    user: { name: 'Demo User' },
-                    render: { 
-                        mode: 'overlay', 
-                    },
+                    //user: { name: 'Demo User' },
+                    //render: {  mode: 'overlay',  },
                     voice: {
                         url: "https://runtime-api.voiceflow.com"
                     },
@@ -343,7 +340,7 @@
             s.parentNode.insertBefore(v, s);
         })(document, 'script');
     </script> -->
-    <script type="module">
+    <!-- <script type="module">
         import { FileUploadExtension, KBUploadExtension } from '/extensions.js';
   
         (function (d, t) {
@@ -371,9 +368,24 @@
           v.type = 'text/javascript';
           s.parentNode.insertBefore(v, s);
         })(document, 'script');
+      </script> -->
+
+      <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '6800d6bc037becb708868134' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production',
+                voice: {
+                  url: "https://runtime-api.voiceflow.com"
+                }
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
       </script>
-
-
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
