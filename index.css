@@ -396,10 +396,8 @@ section>h4 {
     border: 3px solid var(--gold);
     h4 {
         margin-bottom: 24px;
-        i {
-            font-style: normal;
+        span {
             color: var(--gold);
-            border: 1px solid red;
         }
     }
     ul  {
@@ -962,7 +960,6 @@ footer .contacts {
             margin-top: 0;
             font-size: 20px;
             line-height: 1.3;
-          
         }
     }
     .about, .features, .demo-stats   {

@@ -294,57 +294,195 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.voiceflow.com/widget/bundle.mjs" type="module"></script>
     <script type="module">
-        import { VideoExtension,
-                  TimerExtension,
-                  FormExtension,
-                  MapExtension,
-                  FileUploadExtension,
-                  KBUploadExtension,
-                  DateExtension,
-                  ConfettiExtension,
-                  FeedbackExtension } from '/extensions.js';
-  
+        //import { FileUploadExtension, KBUploadExtension } from '/extensions.js';
+
         (function (d, t) {
-          var v = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-          v.onload = function () {
-            window.voiceflow.chat.load({
-              verify: { projectID: '65e8846e905ec742d67e774f' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'development',
-              user: {
-                name: 'Demo User',
-              },
-              render: {
-                mode: 'overlay',
-              },
-              autostart: false,
-              allowDangerousHTML: true,
-              assistant: {
-                extensions: [
-                  VideoExtension,
-                  TimerExtension,
-                  FormExtension,
-                  MapExtension,
-                  FileUploadExtension,
-                  KBUploadExtension,
-                  DateExtension,
-                  ConfettiExtension,
-                  FeedbackExtension,
-                ],
-              },
-            });
-          };
-          v.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
-          v.type = 'text/javascript';
-          s.parentNode.insertBefore(v, s);
+            var v = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            v.onload = function () {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '65e8846e905ec742d67e774f' },
+                    //verify: { projectID: '67f51b0761af1de5274ce933' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'development',
+                    user: { name: 'Demo User' },
+                    render: {
+                        mode: 'overlay',
+                    },
+                    voice: {
+                    url: "https://runtime-api.voiceflow.com"
+                    },
+                    autostart: false,
+                    allowDangerousHTML: true,
+                    assistant: {
+                        extensions: [ FileUploadExtension, KBUploadExtension, ],
+                    },
+                });
+            };
+            v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+            v.type = 'text/javascript';
+            s.parentNode.insertBefore(v, s);
         })(document, 'script');
-      </script>
+
+        const FileUploadExtension = {
+  name: 'FileUpload',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_fileUpload' || trace.payload?.name === 'ext_fileUpload',
+  render: ({ trace, element }) => {
+    const fileUploadContainer = document.createElement('div')
+    fileUploadContainer.innerHTML = `
+      <style>
+        .my-file-upload {
+          border: 2px dashed rgba(46, 110, 225, 0.3);
+          padding: 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      </style>
+      <div class='my-file-upload'>Drag and drop a file here or click to upload</div>
+      <input type='file' style='display: none;'>
+    `
+
+    const fileInput = fileUploadContainer.querySelector('input[type=file]')
+    const fileUploadBox = fileUploadContainer.querySelector('.my-file-upload')
+
+    fileUploadBox.addEventListener('click', function () {
+      fileInput.click()
+    })
+
+    fileInput.addEventListener('change', function () {
+      const file = fileInput.files[0]
+      console.log('File selected:', file)
+
+      fileUploadContainer.innerHTML = `<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/upload/upload.gif" alt="Upload" width="50" height="50">`
+
+      var data = new FormData()
+      data.append('file', file)
+
+      fetch('https://tmpfiles.org/api/v1/upload', {
+        method: 'POST',
+        body: data,
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Upload failed: ' + response.statusText)
+          }
+        })
+        .then((result) => {
+          fileUploadContainer.innerHTML =
+            '<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/check/check.gif" alt="Done" width="50" height="50">'
+          console.log('File uploaded:', result.data.url)
+          window.voiceflow.chat.interact({
+            type: 'complete',
+            payload: {
+              file: result.data.url.replace(
+                'https://tmpfiles.org/',
+                'https://tmpfiles.org/dl/'
+              ),
+            },
+          })
+        })
+        .catch((error) => {
+          console.error(error)
+          fileUploadContainer.innerHTML = '<div>Error during upload</div>'
+        })
+    })
+
+    element.appendChild(fileUploadContainer)
+  },
+}
+
+        const KBUploadExtension = {
+  name: 'KBUpload',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_KBUpload' || trace.payload?.name === 'ext_KBUpload',
+  render: ({ trace, element }) => {
+    const apiKey = trace.payload.apiKey || null
+    const maxChunkSize = trace.payload.maxChunkSize || 1000
+    const tags = `tags=${JSON.stringify(trace.payload.tags)}&` || ''
+    const overwrite = trace.payload.overwrite || false
+
+    if (apiKey) {
+      const kbfileUploadContainer = document.createElement('div')
+      kbfileUploadContainer.innerHTML = `
+      <style>
+        .my-file-upload {
+          border: 2px dashed rgba(46, 110, 225, 0.3);
+          padding: 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      </style>
+      <div class='my-file-upload'>Drag and drop a file here or click to upload</div>
+      <input type='file' accept='.txt,.text,.pdf,.docx' style='display: none;'>
+    `
+
+      const fileInput = kbfileUploadContainer.querySelector('input[type=file]')
+      const fileUploadBox =
+        kbfileUploadContainer.querySelector('.my-file-upload')
+
+      fileUploadBox.addEventListener('click', function () {
+        fileInput.click()
+      })
+
+      fileInput.addEventListener('change', function () {
+        const file = fileInput.files[0]
+
+        kbfileUploadContainer.innerHTML = `<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/upload/upload.gif" alt="Upload" width="50" height="50">`
+
+        const formData = new FormData()
+        formData.append('file', file)
+
+        fetch(
+          `https://api.voiceflow.com/v3alpha/knowledge-base/docs/upload?${tags}overwrite=${overwrite}&maxChunkSize=${maxChunkSize}`,
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              Authorization: apiKey,
+            },
+            body: formData,
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              return response.json()
+            } else {
+              throw new Error('Upload failed: ' + response.statusText)
+              window.voiceflow.chat.interact({
+                type: 'error',
+                payload: {
+                  id: 0,
+                },
+              })
+            }
+          })
+          .then((result) => {
+            kbfileUploadContainer.innerHTML =
+              '<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/check/check.gif" alt="Done" width="50" height="50">'
+            window.voiceflow.chat.interact({
+              type: 'complete',
+              payload: {
+                id: result.data.documentID || 0,
+              },
+            })
+          })
+          .catch((error) => {
+            console.error(error)
+            kbfileUploadContainer.innerHTML = '<div>Error during upload</div>'
+          })
+      })
+      element.appendChild(kbfileUploadContainer)
+    }
+  },
+}
+    </script>
     <!-- <script type="text/javascript">
-        // import VF from "https://cdn.voiceflow.com/widget/bundle.mjs";
         (function(d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
             v.onload = function() {
@@ -362,12 +500,15 @@
             s.parentNode.insertBefore(v, s);
         })(document, 'script');
     </script> -->
+    
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
     </script>    
-    <script src="./extensions.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
