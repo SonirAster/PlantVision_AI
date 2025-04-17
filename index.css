@@ -298,10 +298,6 @@ section>h4 {
         color: inherit;
         margin-bottom: 40px;
         padding: 32px 0;
-        /* mac */
-        border: 1px solid red;
-        padding-top: 32px;
-
         width: 100%;
         background-color: none;
     }
@@ -334,9 +330,7 @@ section>h4 {
     /* mac */
     text-align: center;
     h4 {
-        border: 1px solid red;
         width: 80%;
-
         color: inherit;
     }
     p {
@@ -429,17 +423,12 @@ section>h4 {
 }
 
 footer {
-    /* mac */
-    display: block;
     max-width: 100vw;
     max-height: 600px;
-    box-sizing: border-box;
-    border: 2px solid red;
-
     padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--dark-blue);
     color: var(--grey);
-    /* background-image: url('./assets/footer.png'); */
+    background-image: url('./assets/footer.png');
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
