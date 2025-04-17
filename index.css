@@ -3,7 +3,6 @@
     --dark-blue: #202229;
     --green: #3d5e1f;
     --grey: #eae7e0;  
-    --blue: #4b6dca;
     --blue: #2a2d35;
     --hover-color: var(--gold);
 
@@ -337,7 +336,7 @@ section>h4 {
     h4 {
         border: 1px solid red;
         width: 80%;
-        padding-bottom: 32px;
+
         color: inherit;
     }
     p {
@@ -442,7 +441,7 @@ footer {
     padding: 40px 24px 64px 24px;
     border-top: 3px solid var(--dark-blue);
     color: var(--grey);
-    background-image: url('./assets/footer.png');
+    /* background-image: url('./assets/footer.png'); */
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
